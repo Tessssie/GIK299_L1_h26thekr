@@ -24,15 +24,29 @@ namespace GIK299_labb_1
                 //En switch som väljer väg utifrån vad användaren har valt i menyn.
                 switch (inputAnswer)
                 {
-                    //double number;
-                    //string input;
+                    
 
                     case "1":
-                        Console.WriteLine("Skriv in vad temperaturen ute är, i Celsius tack:");
-                        string inputTemp = Console.ReadLine();
-                        Thread.Sleep(800);
-                        //if (double.TryParse(input, out number))
-                        
+                        //En tryParse så användaren kan skriva in fel värde utan att programmet kraschar.
+                        bool validTemperature = true;
+                        double outTemp = 0;
+
+                        while (validTemperature)
+                        {
+                            Console.WriteLine("Skriv in vad temperaturen ute är, i Celsius tack:");
+                            string inputTemp = Console.ReadLine();
+                            Thread.Sleep(800);
+                            validTemperature = double.TryParse(inputTemp, out outTemp);
+
+
+                            if (!validTemperature)
+                            {
+                                Console.WriteLine("Ogiltig inmatning, prova igen.");
+                            }
+                        }
+
+
+
                         Console.WriteLine();
                         Console.WriteLine("Nu kan du skriva in vindhastigheten, gärna i km/h:");
                         string inputWindSpeed = Console.ReadLine();
@@ -44,7 +58,7 @@ namespace GIK299_labb_1
                         Console.WriteLine();
 
                         //Omvandlar svaren från string till double
-                        double outTemp = Double.Parse(inputTemp);
+                        //double outTemp = Double.Parse(inputTemp);
                         double windSpeed = Double.Parse(inputWindSpeed);
 
                         //Om användaren svarat i m/s
@@ -77,8 +91,8 @@ namespace GIK299_labb_1
                         { Console.WriteLine("\tKlassificering: Stor risk för frostskada."); }
                         Thread.Sleep(5000);
                         Console.WriteLine();
-                        break; 
-                    case "2": 
+                        break;
+                    case "2":
                         runProgram = false;
                         Console.WriteLine("Tack och hej!");
                         Thread.Sleep(3000); //Låter programmet hållas öppet så användaren hinner se utskriften. 
