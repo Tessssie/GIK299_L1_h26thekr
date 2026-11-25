@@ -8,6 +8,9 @@ namespace GIK299_labb_1
     {
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~ Wind Chill-kalkylator ~~~~~~~~~~~~~~~~~~~~");
+
             //Sätter variabeln bool till true, programmet körs endast då.
             bool runProgram = true;
 
@@ -16,7 +19,7 @@ namespace GIK299_labb_1
             {
                 //Programmets meny.
                 Console.ForegroundColor = ConsoleColor.Cyan; //Trevlig färg på texten.
-                Console.WriteLine("Hej och välkommen till wind chill-kalkylatorn!\n\nVänligen välj något av dessa alternativ, svara med 1 eller 2:");
+                Console.WriteLine("Vänligen välj något av dessa alternativ, svara med 1 eller 2:");
                 Console.WriteLine();
                 Console.WriteLine("\t1. Beräkna wind chill-temperatur.\n\t2. Avsluta.");
                 string inputAnswer = Console.ReadLine();//En liten fördröjning till nästa utskrift.
