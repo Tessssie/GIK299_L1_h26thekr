@@ -11,10 +11,10 @@ namespace GIK299_labb_1
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~ Wind Chill-kalkylator ~~~~~~~~~~~~~~~~~~~~");
 
-            //Sätter variabeln bool till true, programmet körs endast då.
+            
             bool runProgram = true;
 
-            //En while-loop som kommer köras så länge runProgram = true
+            //En while-loop som kommer köras tills användaren avslutar programmet
             while (runProgram == true)
             {
                 //Programmets meny.
@@ -108,10 +108,17 @@ namespace GIK299_labb_1
                         }
 
                         // Räknar ut Math.Pow till windChillTemperature-formeln
-                        double powWS = Math.Pow(windSpeed, 0.16);
+                        double powWindSpeed = Math.Pow(windSpeed, 0.16);
 
+                        /* DEBUG! Breakpoint på raden nedanför kommentaren.
+                         * Använder T = - 15, V = 10 m/s.
+                         * Locals innan F10: windSpeed = 36. outTemp = -10
+                         * Locals efter F10: windChillTemperature = -26,9
+                         * Reflektion: Skrev in 10 m/s och programmet räknade ut vindhastigheten
+                         * till 36 km/h vilket är korrekt. Uträkningen känns rimlig.
+                         */
                         // Wind chill-uträkningen
-                        double windChillTemperature = 13.12 + 0.6215 * outTemp - 11.37 * powWS + 0.3965 * outTemp * powWS;
+                        double windChillTemperature = 13.12 + 0.6215 * outTemp - 11.37 * powWindSpeed + 0.3965 * outTemp * powWindSpeed;
 
                         //Utskrift med resultatet
                         
@@ -122,12 +129,16 @@ namespace GIK299_labb_1
                         //Utskrift beroende på resultatet på windChillTemperature
                         if (windChillTemperature >= -25)
                         { Console.WriteLine("\tKlassificering: Kallt"); }
+
                         else if (windChillTemperature < -25 && windChillTemperature >= -35)
                         { Console.WriteLine("\tKlassificering: Mycket kallt"); }
+
                         else if (windChillTemperature < -35 && windChillTemperature >= -60)
                         { Console.WriteLine("\tKlassificering: Risk för frostskada"); }
+
                         else
                         { Console.WriteLine("\tKlassificering: Stor risk för frostskada."); }
+
                         Thread.Sleep(3000);
                         Console.WriteLine();
                         Console.WriteLine();
@@ -143,7 +154,7 @@ namespace GIK299_labb_1
                     default:
 
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Du har skrivit in ett ogiltigt svar.");
+                        Console.WriteLine("Ogiltig inmatning, försök igen.");
                         Console.WriteLine();
                         Console.WriteLine();
                         Thread.Sleep(800);//Låter programmet hållas öppet så användaren hinner se utskriften.
