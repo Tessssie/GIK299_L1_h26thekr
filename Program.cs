@@ -28,7 +28,7 @@ namespace GIK299_labb_1
                     //string input;
 
                     case "1":
-                        Console.WriteLine(" in vad temperaturen ute är, i Celsius tack:");
+                        Console.WriteLine("Skriv in vad temperaturen ute är, i Celsius tack:");
                         string inputTemp = Console.ReadLine();
                         Thread.Sleep(800);
                         //if (double.TryParse(input, out number))
