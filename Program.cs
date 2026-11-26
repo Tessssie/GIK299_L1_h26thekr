@@ -62,7 +62,7 @@ namespace GIK299_labb_1
                         while (!validWindSpeed)
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.WriteLine("Nu kan du skriva in vindhastigheten:");
+                            Console.WriteLine("Nu kan du skriva in vindhastigheten, gärna km/h:");
                             string inputWindSpeed = Console.ReadLine();
                             Console.WriteLine();
                             Thread.Sleep(800);
@@ -80,7 +80,7 @@ namespace GIK299_labb_1
 
                         string speedUnit = "x";
 
-                        //En while-loop om användaren inte skriver in km/h eller m/s.
+                        //En while-loop för att kontrollera att användaren skriver in km/h eller m/s.
                         while (speedUnit != "km/h" && speedUnit != "m/s")
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -96,11 +96,9 @@ namespace GIK299_labb_1
                                 Console.WriteLine();
                                 Thread.Sleep(800);
                             }
-
-
-                           
+   
                         }
-                        //Om användaren svarat i m/s
+                        //Beräkning till km/h om användaren skrivit in m/s.
                         if (speedUnit == "m/s")
                         {
                             windSpeed = windSpeed * 3.6;
@@ -115,7 +113,9 @@ namespace GIK299_labb_1
                          * Locals innan F10: windSpeed = 36. outTemp = -10
                          * Locals efter F10: windChillTemperature = -26,9
                          * Reflektion: Skrev in 10 m/s och programmet räknade ut vindhastigheten
-                         * till 36 km/h vilket är korrekt. Uträkningen känns rimlig.
+                         * till 36 km/h vilket är rätt.
+                         * Det är ett bra sätt att se att beräkningen
+                         * blir korrekt. I det här fallet känns resultatet rimligt.
                          */
                         // Wind chill-uträkningen
                         double windChillTemperature = 13.12 + 0.6215 * outTemp - 11.37 * powWindSpeed + 0.3965 * outTemp * powWindSpeed;
@@ -144,6 +144,7 @@ namespace GIK299_labb_1
                         Console.WriteLine();
 
                         break;
+
                     case "2":
                         runProgram = false;
                         Console.WriteLine("Tack och hej!");
@@ -160,6 +161,8 @@ namespace GIK299_labb_1
                         Thread.Sleep(800);//Låter programmet hållas öppet så användaren hinner se utskriften.
                         break;
 
+                        
+                    
                 }
             }
         }
