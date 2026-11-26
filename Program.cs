@@ -11,7 +11,6 @@ namespace GIK299_labb_1
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~ Wind Chill-kalkylator ~~~~~~~~~~~~~~~~~~~~");
 
-            
             bool runProgram = true;
 
             //En while-loop som kommer köras tills användaren avslutar programmet
@@ -22,7 +21,7 @@ namespace GIK299_labb_1
                 Console.WriteLine("Vänligen välj något av dessa alternativ, svara med 1 eller 2:");
                 Console.WriteLine();
                 Console.WriteLine("\t1. Beräkna wind chill-temperatur.\n\t2. Avsluta.");
-                string inputAnswer = Console.ReadLine();//En liten fördröjning till nästa utskrift.
+                string inputAnswer = Console.ReadLine();
                 Console.WriteLine();//Tom rad för mer lättläst program.
 
                 //En switch som väljer väg utifrån vad användaren har valt i menyn.
@@ -30,18 +29,19 @@ namespace GIK299_labb_1
                 {
 
                     case "1":
-                        //En while-loop med TryParse.
-                        //Om användaren skriver in ogiltig input.
+                        
                         bool validTemperature = false;
                         double outTemp = 0;
 
+                        //En while-loop med TryParse för att kontrollera
+                        //om användaren skriver in ogiltig input.
                         while (!validTemperature)
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("Skriv in vad temperaturen ute är, i Celsius tack:");
                             string inputTemp = Console.ReadLine();
                             Console.WriteLine();
-                            Thread.Sleep(800);
+                            Thread.Sleep(800); //Liten fördröjning till nästa utskrift
                             validTemperature = double.TryParse(inputTemp, out outTemp);
 
 
@@ -108,7 +108,7 @@ namespace GIK299_labb_1
                         // Räknar ut Math.Pow till windChillTemperature-formeln
                         double powWindSpeed = Math.Pow(windSpeed, 0.16);
 
-                        /* DEBUG! Breakpoint på raden nedanför kommentaren.
+                        /* DEBUG! Breakpoint på raden nedanför Wind chill-uträknings kommentaren.
                          * Använder T = - 15, V = 10 m/s.
                          * Locals innan F10: windSpeed = 36. outTemp = -10
                          * Locals efter F10: windChillTemperature = -26,9
@@ -117,11 +117,11 @@ namespace GIK299_labb_1
                          * Det är ett bra sätt att se att beräkningen
                          * blir korrekt. I det här fallet känns resultatet rimligt.
                          */
+
                         // Wind chill-uträkningen
                         double windChillTemperature = 13.12 + 0.6215 * outTemp - 11.37 * powWindSpeed + 0.3965 * outTemp * powWindSpeed;
 
                         //Utskrift med resultatet
-                        
                         Console.WriteLine("Det är " + outTemp.ToString("F1") + "º ute och vinden blåser i " + windSpeed.ToString("F1") + " km/h.\nDetta betyder att wind chill-temperaturen är " + windChillTemperature.ToString("F1") + "º.");
                         Thread.Sleep(800);
                         Console.WriteLine();
@@ -158,16 +158,12 @@ namespace GIK299_labb_1
                         Console.WriteLine("Ogiltig inmatning, försök igen.");
                         Console.WriteLine();
                         Console.WriteLine();
-                        Thread.Sleep(800);//Låter programmet hållas öppet så användaren hinner se utskriften.
-                        break;
-
-                        
-                    
+                        Thread.Sleep(800);
+                        break;     
                 }
             }
         }
     }
-
 }
 
 
